@@ -1,0 +1,15 @@
+﻿# Cloudflare Pages + Workers 배포 설정
+# 연동 방법: docs 폴더의 수동 연동 작업 보고서 참조
+
+name = "coding-study"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# 환경변수 (공개값 — .dev.vars에서 로컬 오버라이드 가능)
+[vars]
+NEXT_PUBLIC_SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "YOUR_ANON_KEY_HERE"
+
+# 시크릿은 Cloudflare Dashboard > Workers & Pages > Settings > Environment Variables 에 등록
+# SUPABASE_SERVICE_ROLE_KEY  →  Cloudflare Dashboard에서 Secret으로 등록
+

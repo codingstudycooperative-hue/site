@@ -1,0 +1,7 @@
+﻿# Cloudflare Workers 로컬 개발용 환경변수 (.dev.vars)
+# 이 파일은 git에 커밋 가능 — 실제 .dev.vars 는 커밋 금지
+
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+

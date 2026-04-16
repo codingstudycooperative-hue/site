@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import PageBanner from "@/components/ui/PageBanner";
 import { equipment } from "@/data/equipment";
 
 const categories = [
@@ -28,58 +27,74 @@ export default function EquipmentPage() {
 
   return (
     <main>
-      <PageBanner title="Equipment" subtitle="보유교구" />
-
-      <div className="container mx-auto px-4 py-16">
-        {/* 카테고리 필터 탭 */}
-        <div className="mb-12 flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                selectedCategory === category
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+      <div className="pt-28 pb-14 px-6 bg-slate-50 border-b border-slate-100">
+        <div className="max-w-6xl mx-auto">
+          <span className="text-primary-600 text-xs font-semibold uppercase tracking-widest">
+            Equipment
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4 leading-tight">
+            보유 교구
+          </h1>
+          <p className="text-slate-500 text-lg max-w-2xl leading-relaxed">
+            다양한 교구를 보유하여 별도 구매 없이 수업을 진행합니다. 교구 대여도
+            가능합니다.
+          </p>
         </div>
-
-        {/* 교구 카드 그리드 */}
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {filteredEquipment.map((item) => (
-            <Link key={item.slug} href={`/equipment/${item.slug}`}>
-              <div className="h-full cursor-pointer rounded-lg border border-gray-200 p-5 transition-shadow hover:shadow-lg">
-                <h3 className="mb-3 text-lg font-bold text-gray-800">
+      </div>
+      
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap gap-2 mb-10">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`text-sm font-medium px-4 py-2 rounded-full border transition-all ${
+                  selectedCategory === category
+                    ? "bg-primary-600 text-white border-primary-600"
+                    : "bg-white text-slate-500 border-slate-200 hover:border-primary-300 hover:text-primary-600"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {filteredEquipment.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/equipment/${item.slug}`}
+                className="group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+              >
+                <div className="text-4xl mb-4">{item.emoji}</div>
+                <div className="mb-3">
+                  <span className="text-xs bg-slate-50 text-slate-500 border border-slate-200 px-2 py-0.5 rounded-full">
+                    {item.category}
+                  </span>
+                </div>
+                <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors">
                   {item.name}
                 </h3>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p>
-                    <span className="font-semibold">카테고리:</span>{" "}
-                    {item.category}
-                  </p>
-                  <p>
-                    <span className="font-semibold">대상:</span> {item.target}
-                  </p>
-                  <p>
-                    <span className="font-semibold">최대인원:</span>{" "}
-                    {item.maxHeadcount}명
-                  </p>
+                <p className="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-2">
+                  {item.description}
+                </p>
+                <div className="flex items-center gap-3 text-xs text-slate-400">
+                  <span>{item.target}</span>
+                  <span>·</span>
+                  <span>최대 {item.maxHeadcount}명</span>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {filteredEquipment.length === 0 && (
-          <div className="py-16 text-center text-gray-500">
-            해당 카테고리의 교구가 없습니다.
+              </Link>
+            ))}
           </div>
-        )}
-      </div>
+
+          {filteredEquipment.length === 0 && (
+            <div className="py-16 text-center text-gray-500">
+              해당 카테고리의 교구가 없습니다.
+            </div>
+          )}
+        </div>
+      </section>
     </main>
   );
 }

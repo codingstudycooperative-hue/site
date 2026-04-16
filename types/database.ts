@@ -55,6 +55,7 @@ export interface Database {
           is_read?: boolean;
           created_at?: string;
         };
+        Relationships: [];
       };
       gallery_albums: {
         Row: {
@@ -62,6 +63,7 @@ export interface Database {
           title: string;
           category: string;
           year: number;
+          description: string | null;
           created_at: string;
         };
         Insert: {
@@ -69,6 +71,7 @@ export interface Database {
           title: string;
           category: string;
           year: number;
+          description?: string | null;
           created_at?: string;
         };
         Update: {
@@ -76,8 +79,10 @@ export interface Database {
           title?: string;
           category?: string;
           year?: number;
+          description?: string | null;
           created_at?: string;
         };
+        Relationships: [];
       };
       gallery_images: {
         Row: {
@@ -101,10 +106,20 @@ export interface Database {
           order_num?: number;
           created_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "gallery_images_album_id_fkey";
+            columns: ["album_id"];
+            isOneToOne: false;
+            referencedRelation: "gallery_albums";
+            referencedColumns: ["id"];
+          },
+        ];
       };
     };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
-    Enums: Record<string, never>;
+    Views: Record<never, never>;
+    Functions: Record<never, never>;
+    Enums: Record<never, never>;
+    CompositeTypes: Record<never, never>;
   };
 }

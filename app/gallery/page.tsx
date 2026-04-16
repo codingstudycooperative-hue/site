@@ -24,16 +24,11 @@ async function getGalleryData() {
     const supabase = await createClient();
 
     // 갤러리 앨범 조회
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: albums, error: albumsError } = (await (supabase as any)
+    const { data: albums, error: albumsError } = await supabase
       .from("gallery_albums")
       .select("*")
       .order("year", { ascending: false })
-      .order("created_at", { ascending: false })) as {
-      data: GalleryAlbum[] | null;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      error: any;
-    };
+      .order("created_at", { ascending: false });
 
     if (albumsError) {
       console.error("앨범 조회 오류:", albumsError);
@@ -47,16 +42,11 @@ async function getGalleryData() {
     // 각 앨범별 이미지 수 및 썸네일 조회
     const albumsWithDetails: Album[] = await Promise.all(
       albums.map(async (album) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { data: images } = (await (supabase as any)
+        const { data: images } = await supabase
           .from("gallery_images")
-          .select("id, storage_path", { count: "exact" })
+          .select("id, storage_path")
           .eq("album_id", album.id)
-          .order("order_num", { ascending: true })) as {
-          data: Array<{ id: string; storage_path: string }> | null;
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          error: any;
-        };
+          .order("order_num", { ascending: true });
 
         const imageCount = images?.length || 0;
 

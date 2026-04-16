@@ -2,42 +2,30 @@ import React from "react";
 import { createClient } from "@/lib/supabase/server";
 import AdminLayout from "@/components/admin/AdminLayout";
 import Link from "next/link";
-import type { Database } from "@/types/database";
-
-type Inquiry = Database["public"]["Tables"]["inquiries"]["Row"];
 
 export default async function DashboardPage() {
   const supabase = await createClient();
 
-  const { count: totalInquiries } = await supabase
-    .from("inquiries")
-    .select("*", { count: "exact", head: true });
-
-  const { count: unreadInquiries } = await supabase
-    .from("inquiries")
-    .select("*", { count: "exact", head: true })
-    .eq("is_read", false);
-
-  // 갤러리 앨범 데이터 조회
-  const { count: totalAlbums } = await supabase
-    .from("gallery_albums")
-    .select("*", { count: "exact", head: true });
-
-  // 갤러리 이미지 데이터 조회
-  const { count: totalImages } = await supabase
-    .from("gallery_images")
-    .select("*", { count: "exact", head: true });
-
-  // 최근 문의 5건 조회
-  const { data: recentInquiries } = (await supabase
-    .from("inquiries")
-    .select("id, org_name, manager, created_at, is_read")
-    .order("created_at", { ascending: false })
-    .limit(5)) as {
-    data: Array<
-      Pick<Inquiry, "id" | "org_name" | "manager" | "created_at" | "is_read">
-    > | null;
-  };
+  const [
+    { count: totalInquiries },
+    { count: unreadInquiries },
+    { count: totalAlbums },
+    { count: totalImages },
+    { data: recentInquiries },
+  ] = await Promise.all([
+    supabase.from("inquiries").select("*", { count: "exact", head: true }),
+    supabase
+      .from("inquiries")
+      .select("*", { count: "exact", head: true })
+      .eq("is_read", false),
+    supabase.from("gallery_albums").select("*", { count: "exact", head: true }),
+    supabase.from("gallery_images").select("*", { count: "exact", head: true }),
+    supabase
+      .from("inquiries")
+      .select("id, org_name, manager, created_at, is_read")
+      .order("created_at", { ascending: false })
+      .limit(5),
+  ]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -184,29 +172,6 @@ export default async function DashboardPage() {
               문의 데이터가 없습니다.
             </div>
           )}
-        </div>
-
-        {/* 빠른 링크 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link
-            href="/admin/inquiries"
-            className="bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-lg p-6 transition-colors"
-          >
-            <h4 className="text-lg font-bold text-indigo-900 mb-2">
-              📧 문의 목록
-            </h4>
-            <p className="text-indigo-700 text-sm">모든 문의를 관리합니다</p>
-          </Link>
-
-          <Link
-            href="/admin/gallery/upload"
-            className="bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg p-6 transition-colors"
-          >
-            <h4 className="text-lg font-bold text-green-900 mb-2">
-              🖼️ 이미지 업로드
-            </h4>
-            <p className="text-green-700 text-sm">새로운 이미지를 추가합니다</p>
-          </Link>
         </div>
       </div>
     </AdminLayout>

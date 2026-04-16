@@ -34,7 +34,7 @@ export default async function EquipmentDetailPage({
           {/* 뒤로가기 링크 */}
           <Link
             href="/equipment"
-            className="mb-8 inline-flex items-center text-blue-600 hover:text-blue-800"
+            className="mb-8 inline-flex items-center text-primary-600 hover:text-primary-800"
           >
             <span className="mr-2">←</span> 보유교구 목록으로
           </Link>
@@ -95,17 +95,17 @@ export default async function EquipmentDetailPage({
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
-                    <span className="mr-3 text-blue-600">•</span>
+                    <span className="mr-3 text-primary-600">•</span>
                     <span>
                       협동조합 회원사를 통한 대여 서비스를 제공합니다.
                     </span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-3 text-blue-600">•</span>
+                    <span className="mr-3 text-primary-600">•</span>
                     <span>교육 기관 및 단체 단위 대여 가능합니다.</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="mr-3 text-blue-600">•</span>
+                    <span className="mr-3 text-primary-600">•</span>
                     <span>
                       자세한 대여 조건은 문의를 통해 확인할 수 있습니다.
                     </span>
@@ -113,7 +113,7 @@ export default async function EquipmentDetailPage({
                 </ul>
               </div>
 
-              <div className="rounded-lg bg-blue-50 p-6">
+              <div className="rounded-lg bg-primary-50 p-6">
                 <h3 className="mb-3 font-bold text-gray-800">
                   더 자세히 알아보기
                 </h3>
@@ -122,8 +122,8 @@ export default async function EquipmentDetailPage({
                   요청할 수 있습니다.
                 </p>
                 <Link
-                  href="/"
-                  className="inline-block rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700"
+                  href="/contact"
+                  className="inline-block rounded-lg bg-primary-600 px-6 py-2 text-white hover:bg-primary-700"
                 >
                   문의하기
                 </Link>

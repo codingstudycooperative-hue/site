@@ -1,4 +1,5 @@
 import PageBanner from "@/components/ui/PageBanner";
+import { ORGANIZATION_INFO } from "@/lib/constants";
 
 export default function Privacy() {
   return (
@@ -118,8 +119,8 @@ export default function Privacy() {
               바랍니다.
             </p>
             <ul className="list-disc list-inside text-slate-600 space-y-2">
-              <li>전화: 0505-300-2452</li>
-              <li>이메일: codingstudy0206@gmail.com</li>
+              <li>전화: {ORGANIZATION_INFO.phone}</li>
+              <li>이메일: {ORGANIZATION_INFO.email}</li>
               <li>개인정보보호위원회: www.pipc.go.kr</li>
             </ul>
           </section>
@@ -157,10 +158,10 @@ export default function Privacy() {
             </p>
             <ul className="text-slate-600 space-y-1">
               <li>
-                <strong>전화:</strong> 0505-300-2452
+                <strong>전화:</strong> {ORGANIZATION_INFO.phone}
               </li>
               <li>
-                <strong>이메일:</strong> codingstudy0206@gmail.com
+                <strong>이메일:</strong> {ORGANIZATION_INFO.email}
               </li>
             </ul>
           </section>

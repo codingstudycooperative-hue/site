@@ -41,67 +41,71 @@ export default function GalleryFilter({ albums, categories, years }: Props) {
     <div>
       {/* 필터 섹션 */}
       <div className="mb-10 space-y-6">
-        {/* 연도 필터 */}
-        <div>
-          <h3 className="text-sm font-semibold text-slate-700 mb-3">연도</h3>
-          <select
-            value={selectedYear === null ? "" : selectedYear}
-            onChange={(e) =>
-              setSelectedYear(
-                e.target.value === "" ? null : parseInt(e.target.value),
-              )
-            }
-            className="w-full md:w-64 px-4 py-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">전체</option>
-            {sortedYears.map((year) => (
-              <option key={year} value={year}>
-                {year}년
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* 카테고리 필터 (탭) */}
-        {categories.length > 0 && (
-          <div>
-            <h3 className="text-sm font-semibold text-slate-700 mb-3">
-              카테고리
+        <div className="flex flex-col sm:flex-row gap-6">
+          {/* 연도 필터 */}
+          <div className="flex-shrink-0">
+            <h3 className="text-sm font-bold text-slate-700 mb-3">
+              연도별
             </h3>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded font-medium transition-colors ${
-                  selectedCategory === null
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-                }`}
-              >
-                전체
-              </button>
-              {categories.map((category) => (
+            <select
+              value={selectedYear === null ? "" : selectedYear}
+              onChange={(e) =>
+                setSelectedYear(
+                  e.target.value === "" ? null : parseInt(e.target.value),
+                )
+              }
+              className="w-full sm:w-40 px-4 py-2 border border-slate-200 bg-slate-50 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 font-medium text-slate-700 transition-colors"
+            >
+              <option value="">전체 기록</option>
+              {sortedYears.map((year) => (
+                <option key={year} value={year}>
+                  {year}년
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* 카테고리 필터 (탭) */}
+          {categories.length > 0 && (
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-slate-700 mb-3">
+                활동 분야
+              </h3>
+              <div className="flex flex-wrap gap-2">
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded font-medium transition-colors ${
-                    selectedCategory === category
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-5 py-2 rounded-full text-sm font-bold transition-all border shadow-sm ${
+                    selectedCategory === null
+                      ? "bg-primary-600 text-white border-primary-600"
+                      : "bg-white text-slate-500 border-slate-200 hover:border-primary-300 hover:text-primary-600"
                   }`}
                 >
-                  {category}
+                  전체
                 </button>
-              ))}
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-5 py-2 rounded-full text-sm font-bold transition-all border shadow-sm ${
+                      selectedCategory === category
+                        ? "bg-primary-600 text-white border-primary-600"
+                        : "bg-white text-slate-500 border-slate-200 hover:border-primary-300 hover:text-primary-600"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {/* 검색 결과 */}
-      <div className="mb-6">
-        <p className="text-slate-600">
-          총 <span className="font-semibold">{filteredAlbums.length}</span>개의
-          앨범
+      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+        <div className="w-1 h-5 bg-primary-600 rounded-full"></div>
+        <p className="font-bold text-slate-800">
+          총 <span className="text-primary-600">{filteredAlbums.length}</span>개의 앨범이 있습니다
         </p>
       </div>
 
@@ -109,9 +113,10 @@ export default function GalleryFilter({ albums, categories, years }: Props) {
       {filteredAlbums.length > 0 ? (
         <GalleryGrid albums={filteredAlbums} />
       ) : (
-        <div className="text-center py-12">
-          <p className="text-slate-500">
-            검색 결과가 없습니다. 필터를 변경해주세요.
+        <div className="text-center py-20 bg-slate-50 border border-slate-100 rounded-2xl">
+          <div className="text-4xl mb-4">📭</div>
+          <p className="text-slate-500 font-medium">
+            해당 조건의 갤러리 앨범이 아직 등록되지 않았습니다.
           </p>
         </div>
       )}

@@ -2,22 +2,14 @@ import React from "react";
 import { createClient } from "@/lib/supabase/server";
 import AdminLayout from "@/components/admin/AdminLayout";
 import Link from "next/link";
-import type { Database } from "@/types/database";
-
-type Inquiry = Database["public"]["Tables"]["inquiries"]["Row"];
-
 export default async function InquiriesPage() {
   const supabase = await createClient();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data: inquiries } = (await (supabase as any)
+  const { data: inquiries } = await supabase
     .from("inquiries")
-    .select("*")
-    .order("created_at", { ascending: false })) as {
-    data: Inquiry[] | null;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    error: any;
-  };
+    .select("id, org_name, manager, phone, created_at, is_read")
+    .order("created_at", { ascending: false })
+    .limit(100);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

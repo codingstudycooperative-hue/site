@@ -1,6 +1,5 @@
-﻿@import "tailwindcss";
-
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -10,22 +9,28 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  --color-primary-50:  #edfaf3;
+  --color-primary-100: #d0f3e4;
+  --color-primary-200: #a2e7c9;
+  --color-primary-300: #65d4a5;
+  --color-primary-400: #2dba7e;
+  --color-primary-500: #0d9b5e;
+  --color-primary-600: #036536;
+  --color-primary-700: #024e2a;
+  --color-primary-800: #013b1f;
+  --color-primary-900: #012c17;
+
+  --font-sans: "Pretendard", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  font-size: 18px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -33,3 +38,25 @@ body {
   box-sizing: border-box;
 }
 
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@utility animate-blink-cursor {
+  animation: blink-cursor 1s step-end infinite;
+}
+
+/* Marquee Slider */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility animate-infinite-scroll {
+  animation: infinite-scroll 30s linear infinite;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}

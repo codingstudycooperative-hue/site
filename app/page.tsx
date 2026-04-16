@@ -1,178 +1,518 @@
 import Link from "next/link";
-import Button from "@/components/ui/Button";
+import Typewriter from "@/components/ui/Typewriter";
+import { STATISTICS } from "@/lib/constants";
 
 export default function Home() {
   return (
     <main>
-      {/* 히어로 섹션 */}
-      <section className="bg-slate-900 text-white py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            미래를 여는 코딩 교육
-          </h1>
-          <p className="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            SW·AI 전문 협동조합으로 학교와 지역사회의 디지털 미래를 함께
-            열어갑니다
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" href="/contact">
-              수업 의뢰하기
-            </Button>
-            <Button variant="secondary" href="/equipment">
-              보유 교구 보기
-            </Button>
+      {/* Hero Section */}
+      <section className="pt-32 pb-24 px-6 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary-50/20 to-primary-50 pointer-events-none"></div>
+        <div className="max-w-6xl mx-auto relative">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse"></span>
+              협동조합이 운영하는 코딩 교육
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight mb-6">
+              <Typewriter
+                text="미래를 여는 코딩 교육"
+                speed={100}
+                hideCursorOnComplete={true}
+              />
+            </h1>
+            <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl min-h-[4rem]">
+              <Typewriter
+                text="SW·AI 전문 협동조합으로 학교와 지역사회의 디지털 미래를 함께 열어갑니다."
+                delay={1500}
+                speed={60}
+              />
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors text-sm"
+              >
+                수업 의뢰하기
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-arrow-right"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </Link>
+              <Link
+                href="/equipment"
+                className="inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 font-semibold px-6 py-3.5 rounded-xl border border-slate-200 transition-colors text-sm"
+              >
+                보유 교구 보기
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* 통계 섹션 */}
-      <section className="py-16 sm:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold text-[#2563eb] mb-2">
-                500+
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-slate-100">
+            <div>
+              <div className="text-5xl font-bold text-primary-600 mb-1">
+                {STATISTICS.hours}
               </div>
-              <p className="text-slate-700">누적 수업시간</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold text-[#2563eb] mb-2">
-                30+
+              <div className="text-sm text-slate-400 font-medium">
+                누적 수업 시간
               </div>
-              <p className="text-slate-700">협력 학교·기관</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold text-[#2563eb] mb-2">
-                10+
+            <div>
+              <div className="text-5xl font-bold text-primary-600 mb-1">
+                {STATISTICS.partners}
               </div>
-              <p className="text-slate-700">보유 교구 종류</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold text-[#2563eb] mb-2">
-                100%
+              <div className="text-sm text-slate-400 font-medium">
+                협력 학교·기관
               </div>
-              <p className="text-slate-700">전문 자격 보유</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 프로그램 섹션 */}
-      <section className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-slate-900">
-            우리의 프로그램
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-slate-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                초등 방과후 코딩
-              </h3>
-              <p className="text-slate-600 mb-4">
-                초등학생을 위한 기초 코딩 교육으로 논리적 사고력과 창의력을
-                키워갑니다.
-              </p>
-              <Link
-                href="/programs"
-                className="text-[#2563eb] font-medium hover:underline"
-              >
-                자세히 보기 →
-              </Link>
+            <div>
+              <div className="text-5xl font-bold text-primary-600 mb-1">
+                {STATISTICS.equipment}
+              </div>
+              <div className="text-sm text-slate-400 font-medium">
+                보유 교구 종류
+              </div>
             </div>
-
-            <div className="bg-white border border-slate-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                중학교 AI 교육
-              </h3>
-              <p className="text-slate-600 mb-4">
-                인공지능의 기초부터 응용까지 실습 중심의 교육으로 미래 역량을
-                갖춥니다.
-              </p>
-              <Link
-                href="/programs"
-                className="text-[#2563eb] font-medium hover:underline"
-              >
-                자세히 보기 →
-              </Link>
-            </div>
-
-            <div className="bg-white border border-slate-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
-                공공기관 체험
-              </h3>
-              <p className="text-slate-600 mb-4">
-                다양한 공공기관 대상 맞춤형 SW·AI 교육 체험 프로그램입니다.
-              </p>
-              <Link
-                href="/programs"
-                className="text-[#2563eb] font-medium hover:underline"
-              >
-                자세히 보기 →
-              </Link>
+            <div>
+              <div className="text-5xl font-bold text-primary-600 mb-1">
+                {STATISTICS.qualified}
+              </div>
+              <div className="text-sm text-slate-400 font-medium">
+                전문 자격 보유
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 특징 섹션 */}
-      <section className="py-16 sm:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-slate-900">
-            우리의 특징
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+      {/* About Section */}
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+          <div>
+            <span className="text-primary-600 text-xs font-semibold uppercase tracking-widest">
+              About
+            </span>
+            <h2 className="text-3xl font-bold text-slate-900 mt-3 mb-5 leading-tight">
+              교육을 함께 만드는
+              <br />
+              협동조합입니다
+            </h2>
+            <p className="text-slate-500 leading-relaxed mb-5">
+              코딩스터디 협동조합은 코딩 교육 전문가들이 모여 설립한 사회적경제
+              조직입니다. 이윤보다 교육의 질을 우선하며, 조합원 모두가
+              전문가이자 의사결정자로 함께 운영합니다.
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-1.5 text-primary-600 hover:text-primary-700 font-semibold text-sm"
+            >
+              조합 소개 자세히 보기
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white p-5 rounded-2xl border border-slate-100">
+              <div className="text-2xl mb-2">🤝</div>
+              <h3 className="font-semibold text-slate-900 text-sm mb-1">
                 협동조합 방식
               </h3>
-              <p className="text-slate-600">
-                지역사회와 함께하는 협동조합 구조로 투명하고 윤리적인 교육을
-                제공합니다.
+              <p className="text-xs text-slate-400 leading-relaxed">
+                민주적 의사결정, 교육 품질 우선
               </p>
             </div>
-
-            <div className="bg-white rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                현장 중심
+            <div className="bg-white p-5 rounded-2xl border border-slate-100">
+              <div className="text-2xl mb-2">📚</div>
+              <h3 className="font-semibold text-slate-900 text-sm mb-1">
+                현장 중심 교육
               </h3>
-              <p className="text-slate-600">
-                학교와 기관의 요구를 반영한 맞춤형 프로그램으로 실질적 역량을
-                키웁니다.
+              <p className="text-xs text-slate-400 leading-relaxed">
+                학교 현장 경험 기반 커리큘럼
               </p>
             </div>
-
-            <div className="bg-white rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">전문성</h3>
-              <p className="text-slate-600">
-                SW·AI 분야 전문 자격을 갖춘 강사들이 최신 교육 트렌드를
-                반영합니다.
+            <div className="bg-white p-5 rounded-2xl border border-slate-100">
+              <div className="text-2xl mb-2">🏆</div>
+              <h3 className="font-semibold text-slate-900 text-sm mb-1">
+                검증된 전문성
+              </h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                정식 자격증 보유 강사진
               </p>
             </div>
-
-            <div className="bg-white rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">맞춤형</h3>
-              <p className="text-slate-600">
-                학교·기관의 특성과 학생 수준에 맞춘 유연한 교육 설계와
-                운영입니다.
+            <div className="bg-white p-5 rounded-2xl border border-slate-100">
+              <div className="text-2xl mb-2">🎯</div>
+              <h3 className="font-semibold text-slate-900 text-sm mb-1">
+                맞춤형 수업
+              </h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                기관 상황에 맞는 커스텀 설계
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 교구 미리보기 섹션 */}
-      <section className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-slate-900">
-            보유 교구
+      {/* Programs Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-primary-600 text-xs font-semibold uppercase tracking-widest">
+              Programs
+            </span>
+            <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-3">
+              교육 프로그램
+            </h2>
+            <p className="text-slate-500 text-sm">
+              각 기관의 상황에 맞게 커리큘럼을 조정합니다.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="rounded-2xl p-7 flex flex-col gap-4 border transition-all hover:shadow-md bg-white border-slate-100">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full w-fit bg-green-50 text-green-700">
+                초등학교
+              </span>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-slate-900">
+                  방과후 코딩 교실
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-500">
+                  스크래치, 엔트리 블록 코딩부터 텍스트 코딩 입문까지. 놀이처럼
+                  배우는 코딩 수업.
+                </p>
+              </div>
+              <ul className="flex flex-col gap-2">
+                <li className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
+                  블록 코딩 (스크래치·엔트리)
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
+                  피지컬 컴퓨팅 (마이크로비트)
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
+                  게임 만들기 프로젝트
+                </li>
+              </ul>
+              <div className="mt-auto pt-4 border-t text-xs border-slate-100 text-slate-400">
+                대상: 초등 1~6학년
+              </div>
+            </div>
+            <div className="rounded-2xl p-7 flex flex-col gap-4 border transition-all hover:shadow-md bg-primary-600 border-primary-600">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full w-fit bg-white/20 text-white">
+                중학교
+              </span>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-white">
+                  자유학기·AI 교육
+                </h3>
+                <p className="text-sm leading-relaxed text-blue-100">
+                  자유학기제 진로 연계 코딩 수업. 파이썬 기초부터 AI 원리
+                  체험까지.
+                </p>
+              </div>
+              <ul className="flex flex-col gap-2">
+                <li className="flex items-center gap-2 text-sm text-blue-100">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-blue-300"></span>
+                  파이썬 기초 프로그래밍
+                </li>
+                <li className="flex items-center gap-2 text-sm text-blue-100">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-blue-300"></span>
+                  AI·머신러닝 원리 체험
+                </li>
+                <li className="flex items-center gap-2 text-sm text-blue-100">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-blue-300"></span>
+                  자유학기 연계 프로젝트
+                </li>
+              </ul>
+              <div className="mt-auto pt-4 border-t text-xs border-white/20 text-blue-200">
+                대상: 중학교 1~3학년
+              </div>
+            </div>
+            <div className="rounded-2xl p-7 flex flex-col gap-4 border transition-all hover:shadow-md bg-white border-slate-100">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full w-fit bg-purple-50 text-purple-700">
+                공공기관
+              </span>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-slate-900">
+                  체험 프로그램
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-500">
+                  도서관, 주민센터, 복지관 등 공공기관 대상 단기 체험 프로그램.
+                </p>
+              </div>
+              <ul className="flex flex-col gap-2">
+                <li className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
+                  드론·코딩 체험
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
+                  VR·AR 콘텐츠 체험
+                </li>
+                <li className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
+                  3D 프린팅 체험
+                </li>
+              </ul>
+              <div className="mt-auto pt-4 border-t text-xs border-slate-100 text-slate-400">
+                대상: 아동·청소년·성인
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold text-sm"
+            >
+              맞춤 프로그램 문의하기
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment Section */}
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <span className="text-primary-600 text-xs font-semibold uppercase tracking-widest">
+                Equipment
+              </span>
+              <h2 className="text-3xl font-bold text-slate-900 mt-2">
+                보유 교구
+              </h2>
+            </div>
+            <Link
+              href="/equipment"
+              className="text-sm text-primary-600 font-semibold hidden sm:flex items-center gap-1"
+            >
+              전체 보기
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </Link>
+          </div>
+          <div className="overflow-hidden relative w-full -mx-6 px-6 sm:mx-0 sm:px-0">
+            {/* 무한 스크롤 컨테이너: 마우스 오버 시 일시정지 */}
+            <div className="flex gap-5 w-max animate-infinite-scroll hover:[animation-play-state:paused] pb-6 pt-1">
+              {/* 원본 카드 5개 */}
+              {[1, 2].map((group) => (
+                <div
+                  key={group}
+                  className="flex gap-5"
+                  aria-hidden={group === 2}
+                >
+                  <Link
+                    href="/equipment/microbit-extension-pack"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🔲</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      마이크로비트 & 확장팩
+                    </h3>
+                    <p className="text-sm text-slate-400">피지컬 컴퓨팅</p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/microbit-genius-kit"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🧩</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      지니어스 스마트 키트
+                    </h3>
+                    <p className="text-sm text-slate-400">피지컬 컴퓨팅</p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/microbit-retro-arcade"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🕹️</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      레트로 아케이드 키트
+                    </h3>
+                    <p className="text-sm text-slate-400">피지컬 컴퓨팅</p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/ozobot"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">⏺️</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      오조봇 (Ozobot)
+                    </h3>
+                    <p className="text-sm text-slate-400">
+                      로봇 코딩 / 유아·초등
+                    </p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/kamibot"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🤖</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      카미봇 (Kamibot)
+                    </h3>
+                    <p className="text-sm text-slate-400">AI 로봇 코딩</p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/sphero"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">⚽</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      스피로 볼 (Sphero)
+                    </h3>
+                    <p className="text-sm text-slate-400">모션 & 로봇 코딩</p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/arduino"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🔌</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      아두이노 센서 키트
+                    </h3>
+                    <p className="text-sm text-slate-400">IOT / 메이커 교육</p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/educational-drone"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🚁</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      텔로(Tello) 에듀 자율주행 드론
+                    </h3>
+                    <p className="text-sm text-slate-400">
+                      AI 자율주행 / 드론 수학
+                    </p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/vr-meta"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🥽</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      메타 퀘스트 (Meta Quest)
+                    </h3>
+                    <p className="text-sm text-slate-400">
+                      가상현실(VR) / 코스페이시스
+                    </p>
+                  </Link>
+
+                  <Link
+                    href="/equipment/makeymakey"
+                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                  >
+                    <div className="text-4xl mb-4">🍌</div>
+                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
+                      메이키메이키 (Makey Makey)
+                    </h3>
+                    <p className="text-sm text-slate-400">발명 / 융합 코딩</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-white border-t border-slate-100">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+            수업 의뢰 문의를 기다리고 있습니다
           </h2>
-          <p className="text-center text-slate-600 mb-8">
-            다양한 교구로 창의적이고 실습 중심의 교육을 제공합니다.
+          <p className="text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">
+            방과후 코딩 수업, 자유학기 AI 교육, 공공기관 체험 프로그램 — 어떤
+            문의도 환영합니다.
           </p>
-          <div className="text-center">
-            <Button variant="primary" href="/equipment">
-              전체 교구 보기
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-black font-bold px-6 py-3.5 rounded-xl border border-slate-200 transition-colors text-sm shadow-sm"
+            >
+              수업 의뢰하기
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-xl border border-transparent transition-colors text-sm shadow-sm"
+            >
+              조합 소개 보기
+            </Link>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 interface AdminLayoutProps {
@@ -20,7 +21,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
     try {
       const supabase = createClient();
       await supabase.auth.signOut();
-      router.push("/admin/login");
+      router.push("/");
     } catch (error) {
       console.error("로그아웃 에러:", error);
       setIsLoggingOut(false);
@@ -55,37 +56,35 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       <div
         className={`${
           isMobileMenuOpen ? "block" : "hidden"
-        } md:block w-full md:w-64 bg-indigo-900 text-white flex flex-col fixed md:static top-0 left-0 z-40 h-screen md:h-auto`}
+        } md:block w-full md:w-64 bg-primary-900 text-white flex flex-col fixed md:static top-0 left-0 z-40 h-screen md:h-auto`}
       >
         {/* 로고/제목 */}
-        <div className="p-6 border-b border-indigo-800">
+        <div className="p-6 border-b border-primary-800">
           <h1 className="text-2xl font-bold">관리자</h1>
-          <p className="text-indigo-300 text-sm mt-1">코딩스터디협동조합</p>
+          <p className="text-primary-300 text-sm mt-1">코딩스터디협동조합</p>
         </div>
 
         {/* 메뉴 */}
         <nav className="flex-1 p-4 space-y-2">
           {menuItems.map((item) => (
-            <button
+            <Link
               key={item.href}
-              onClick={() => {
-                router.push(item.href);
-                setIsMobileMenuOpen(false);
-              }}
-              className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+              href={item.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block w-full px-4 py-3 rounded-lg transition-colors ${
                 isMenuItemActive(item.href)
-                  ? "bg-indigo-700 text-white font-semibold"
-                  : "text-indigo-100 hover:bg-indigo-800"
+                  ? "bg-primary-700 text-white font-semibold"
+                  : "text-primary-100 hover:bg-primary-800"
               }`}
             >
               <span className="mr-3">{item.icon}</span>
               {item.label}
-            </button>
+            </Link>
           ))}
         </nav>
 
         {/* 로그아웃 버튼 */}
-        <div className="p-4 border-t border-indigo-800">
+        <div className="p-4 border-t border-primary-800">
           <button
             onClick={handleLogout}
             disabled={isLoggingOut}
@@ -99,7 +98,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
         <div className="md:hidden p-4">
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="w-full bg-indigo-800 text-white py-2 px-4 rounded-lg"
+            className="w-full bg-primary-800 text-white py-2 px-4 rounded-lg"
           >
             메뉴 닫기
           </button>
@@ -114,7 +113,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
           {/* 모바일 메뉴 버튼 */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden bg-indigo-900 text-white px-4 py-2 rounded-lg"
+            className="md:hidden bg-primary-900 text-white px-4 py-2 rounded-lg"
           >
             ☰ 메뉴
           </button>

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import PageBanner from "@/components/ui/PageBanner";
 import { equipment } from "@/data/equipment";
 
@@ -30,16 +31,16 @@ export default async function EquipmentDetailPage({
       <PageBanner title={item.name} subtitle={item.category} />
 
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-3xl">
-          {/* 뒤로가기 링크 */}
-          <Link
-            href="/equipment"
-            className="mb-8 inline-flex items-center text-primary-600 hover:text-primary-800"
-          >
-            <span className="mr-2">←</span> 보유교구 목록으로
-          </Link>
+        {/* 뒤로가기 링크 */}
+        <Link
+          href="/equipment"
+          className="mb-8 inline-flex items-center text-primary-600 hover:text-primary-800"
+        >
+          <span className="mr-2">←</span> 보유교구 목록으로
+        </Link>
 
-          {/* 교구 상세 정보 */}
+        <div className="mt-4 grid gap-10 lg:grid-cols-2 lg:items-start">
+          {/* 좌측: 교구 상세 정보 */}
           <div className="rounded-lg border border-gray-200 p-8">
             <div className="mb-8 space-y-6">
               <div>
@@ -130,6 +131,26 @@ export default async function EquipmentDetailPage({
               </div>
             </div>
           </div>
+
+          {/* 우측: 이미지 */}
+          {item.images && item.images.length > 0 && (
+            <div className="sticky top-24 space-y-4">
+              {item.images.map((src, index) => (
+                <div
+                  key={index}
+                  className="overflow-hidden rounded-xl border border-gray-200 bg-gray-50"
+                >
+                  <Image
+                    src={src}
+                    alt={`${item.name} 이미지 ${item.images!.length > 1 ? index + 1 : ""}`}
+                    width={600}
+                    height={450}
+                    className="h-auto w-full object-contain p-6"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </main>

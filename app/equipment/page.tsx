@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { equipment } from "@/data/equipment";
 
 const categories = [
@@ -15,15 +16,30 @@ const categories = [
   "언플러그드",
 ];
 
+interface PopupState {
+  slug: string;
+  x: number;
+  y: number;
+  above: boolean;
+}
+
 export default function EquipmentPage() {
   const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [popup, setPopup] = useState<PopupState | null>(null);
 
   const filteredEquipment = useMemo(() => {
-    if (selectedCategory === "전체") {
-      return equipment;
-    }
+    if (selectedCategory === "전체") return equipment;
     return equipment.filter((item) => item.category === selectedCategory);
   }, [selectedCategory]);
+
+  const showPopup = useCallback((slug: string, x: number, y: number) => {
+    const above = y > 220;
+    setPopup({ slug, x, y, above });
+  }, []);
+
+  const hidePopup = useCallback(() => setPopup(null), []);
+
+  const popupItem = popup ? equipment.find((e) => e.slug === popup.slug) : null;
 
   return (
     <main>
@@ -41,7 +57,7 @@ export default function EquipmentPage() {
           </p>
         </div>
       </div>
-      
+
       <section className="py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap gap-2 mb-10">
@@ -59,15 +75,34 @@ export default function EquipmentPage() {
               </button>
             ))}
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filteredEquipment.map((item) => (
               <Link
                 key={item.slug}
                 href={`/equipment/${item.slug}`}
                 className="group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
+                onMouseEnter={(e) => {
+                  if (!item.images?.[0]) return;
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  showPopup(
+                    item.slug,
+                    rect.left + rect.width / 2,
+                    rect.top + window.scrollY,
+                  );
+                }}
+                onMouseLeave={hidePopup}
+                onTouchStart={(e) => {
+                  if (!item.images?.[0]) return;
+                  const touch = e.touches[0];
+                  showPopup(
+                    item.slug,
+                    touch.clientX,
+                    touch.clientY + window.scrollY,
+                  );
+                }}
+                onTouchEnd={hidePopup}
               >
-                <div className="text-4xl mb-4">{item.emoji}</div>
                 <div className="mb-3">
                   <span className="text-xs bg-slate-50 text-slate-500 border border-slate-200 px-2 py-0.5 rounded-full">
                     {item.category}
@@ -95,6 +130,32 @@ export default function EquipmentPage() {
           )}
         </div>
       </section>
+
+      {/* 이미지 팝업 */}
+      {popup && popupItem?.images?.[0] && (
+        <div
+          className="fixed z-50 pointer-events-none rounded-2xl shadow-2xl border border-slate-200 bg-white overflow-hidden"
+          style={{
+            left: popup.x,
+            top: popup.above
+              ? popup.y - window.scrollY - 210
+              : popup.y - window.scrollY + 12,
+            transform: "translateX(-50%)",
+            width: 200,
+          }}
+        >
+          <Image
+            src={popupItem.images[0]}
+            alt={popupItem.name}
+            width={200}
+            height={160}
+            className="w-full object-contain p-3"
+          />
+          <div className="px-3 pb-3 text-center text-xs font-medium text-slate-600">
+            {popupItem.name}
+          </div>
+        </div>
+      )}
     </main>
   );
 }

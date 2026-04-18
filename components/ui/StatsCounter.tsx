@@ -19,7 +19,15 @@ const STATS: StatConfig[] = [
   { value: 100, suffix: "%", label: "전문 자격 보유" },
 ];
 
-function SlotDigit({ digit, started }: { digit: number; started: boolean }) {
+function SlotDigit({
+  digit,
+  started,
+  delay,
+}: {
+  digit: number;
+  started: boolean;
+  delay: number;
+}) {
   const stripRef = useRef<HTMLDivElement>(null);
 
   // 0~9를 CYCLES번 반복한 뒤 최종 숫자로 착지
@@ -34,11 +42,14 @@ function SlotDigit({ digit, started }: { digit: number; started: boolean }) {
   useEffect(() => {
     const el = stripRef.current;
     if (!el || !started) return;
-    requestAnimationFrame(() => {
-      el.style.transition = `transform ${DURATION}ms cubic-bezier(0.12, 0, 0.08, 1)`;
-      el.style.transform = `translateY(${finalOffset}px)`;
-    });
-  }, [started, finalOffset]);
+    const timer = setTimeout(() => {
+      requestAnimationFrame(() => {
+        el.style.transition = `transform ${DURATION}ms cubic-bezier(0.12, 0, 0.08, 1)`;
+        el.style.transform = `translateY(${finalOffset}px)`;
+      });
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [started, finalOffset, delay]);
 
   return (
     <div style={{ height: ITEM_H, overflow: "hidden" }}>
@@ -62,6 +73,10 @@ function SlotNumber({ value, suffix }: { value: number; suffix: string }) {
   const [showSuffix, setShowSuffix] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const digits = String(value).split("").map(Number);
+  const STAGGER = 120;
+  const totalDuration = DURATION + (digits.length - 1) * STAGGER;
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -69,16 +84,14 @@ function SlotNumber({ value, suffix }: { value: number; suffix: string }) {
       ([entry]) => {
         if (entry.isIntersecting && !started) {
           setStarted(true);
-          setTimeout(() => setShowSuffix(true), DURATION);
+          setTimeout(() => setShowSuffix(true), totalDuration);
         }
       },
       { threshold: 0.5 },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [started]);
-
-  const digits = String(value).split("").map(Number);
+  }, [started, totalDuration]);
 
   return (
     <div
@@ -87,7 +100,7 @@ function SlotNumber({ value, suffix }: { value: number; suffix: string }) {
       style={{ height: ITEM_H }}
     >
       {digits.map((d, i) => (
-        <SlotDigit key={i} digit={d} started={started} />
+        <SlotDigit key={i} digit={d} started={started} delay={i * STAGGER} />
       ))}
       <span
         className="font-bold text-primary-600 transition-opacity duration-500"

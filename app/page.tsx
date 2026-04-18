@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Typewriter from "@/components/ui/Typewriter";
 import EquipmentSlider from "@/components/ui/EquipmentSlider";
-import { STATISTICS } from "@/lib/constants";
+import StatsCounter from "@/components/ui/StatsCounter";
 
 export default function Home() {
   return (
@@ -59,40 +59,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-slate-100">
-            <div>
-              <div className="text-5xl font-bold text-primary-600 mb-1">
-                {STATISTICS.hours}
-              </div>
-              <div className="text-sm text-slate-400 font-medium">
-                누적 수업 시간
-              </div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-primary-600 mb-1">
-                {STATISTICS.partners}
-              </div>
-              <div className="text-sm text-slate-400 font-medium">
-                협력 학교·기관
-              </div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-primary-600 mb-1">
-                {STATISTICS.equipment}
-              </div>
-              <div className="text-sm text-slate-400 font-medium">
-                보유 교구 종류
-              </div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-primary-600 mb-1">
-                {STATISTICS.qualified}
-              </div>
-              <div className="text-sm text-slate-400 font-medium">
-                전문 자격 보유
-              </div>
-            </div>
-          </div>
+          <StatsCounter />
         </div>
       </section>
 

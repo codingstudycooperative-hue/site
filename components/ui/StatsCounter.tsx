@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const ITEM_H = 56;
-const DURATION = 1600;
+const DURATION = 2000;
 const CYCLES = 4;
 
 interface StatConfig {

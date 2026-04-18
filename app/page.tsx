@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Typewriter from "@/components/ui/Typewriter";
+import EquipmentSlider from "@/components/ui/EquipmentSlider";
 import { STATISTICS } from "@/lib/constants";
 
 export default function Home() {
@@ -343,135 +344,7 @@ export default function Home() {
               </svg>
             </Link>
           </div>
-          <div className="overflow-hidden relative w-full -mx-6 px-6 sm:mx-0 sm:px-0">
-            {/* 무한 스크롤 컨테이너: 마우스 오버 시 일시정지 */}
-            <div className="flex gap-5 w-max animate-infinite-scroll hover:[animation-play-state:paused] pb-6 pt-1">
-              {/* 원본 카드 5개 */}
-              {[1, 2].map((group) => (
-                <div
-                  key={group}
-                  className="flex gap-5"
-                  aria-hidden={group === 2}
-                >
-                  <Link
-                    href="/equipment/microbit-extension-pack"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🔲</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      마이크로비트 & 확장팩
-                    </h3>
-                    <p className="text-sm text-slate-400">피지컬 컴퓨팅</p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/microbit-genius-kit"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🧩</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      지니어스 스마트 키트
-                    </h3>
-                    <p className="text-sm text-slate-400">피지컬 컴퓨팅</p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/microbit-retro-arcade"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🕹️</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      레트로 아케이드 키트
-                    </h3>
-                    <p className="text-sm text-slate-400">피지컬 컴퓨팅</p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/ozobot"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">⏺️</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      오조봇 (Ozobot)
-                    </h3>
-                    <p className="text-sm text-slate-400">
-                      로봇 코딩 / 유아·초등
-                    </p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/kamibot"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🤖</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      카미봇 (Kamibot)
-                    </h3>
-                    <p className="text-sm text-slate-400">AI 로봇 코딩</p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/sphero"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">⚽</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      스피로 볼 (Sphero)
-                    </h3>
-                    <p className="text-sm text-slate-400">모션 & 로봇 코딩</p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/arduino"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🔌</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      아두이노 센서 키트
-                    </h3>
-                    <p className="text-sm text-slate-400">IOT / 메이커 교육</p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/educational-drone"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🚁</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      텔로(Tello) 에듀 자율주행 드론
-                    </h3>
-                    <p className="text-sm text-slate-400">
-                      AI 자율주행 / 드론 수학
-                    </p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/vr-meta"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🥽</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      메타 퀘스트 (Meta Quest)
-                    </h3>
-                    <p className="text-sm text-slate-400">
-                      가상현실(VR) / 코스페이시스
-                    </p>
-                  </Link>
-
-                  <Link
-                    href="/equipment/makeymakey"
-                    className="flex-none w-[280px] group bg-white p-6 rounded-2xl border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all block"
-                  >
-                    <div className="text-4xl mb-4">🍌</div>
-                    <h3 className="font-bold text-slate-900 mb-1.5 group-hover:text-primary-600 transition-colors text-base">
-                      메이키메이키 (Makey Makey)
-                    </h3>
-                    <p className="text-sm text-slate-400">발명 / 융합 코딩</p>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
+          <EquipmentSlider />
         </div>
       </section>
 

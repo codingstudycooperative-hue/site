@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Typewriter from "@/components/ui/Typewriter";
 import EquipmentSlider from "@/components/ui/EquipmentSlider";
@@ -99,7 +100,15 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">👨‍💻</div>
+              <div className="mb-2">
+                <Image
+                  src="/assets/sw.webp"
+                  alt="SW·AI 교육"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
                 SW·AI 교육 프로그램 운영
               </h3>
@@ -108,7 +117,15 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">📚</div>
+              <div className="mb-2">
+                <Image
+                  src="/assets/bui.webp"
+                  alt="교육 프로그램 개발"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
                 교육 프로그램 개발
               </h3>
@@ -117,7 +134,15 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">👩‍🏫</div>
+              <div className="mb-2">
+                <Image
+                  src="/assets/te.webp"
+                  alt="SW교육 강사 양성"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
                 SW교육 강사 양성
               </h3>
@@ -126,7 +151,15 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">🤖</div>
+              <div className="mb-2">
+                <Image
+                  src="/assets/bui.webp"
+                  alt="교구 대여 사업"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
                 교구 대여 사업
               </h3>

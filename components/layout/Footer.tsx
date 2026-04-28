@@ -69,7 +69,12 @@ export default function Footer() {
               <span className="text-slate-200 font-medium w-14 shrink-0">
                 메일
               </span>
-              <span className="text-slate-300">{ORGANIZATION_INFO.email}</span>
+              <a
+                href={`mailto:${ORGANIZATION_INFO.email}`}
+                className="text-slate-300 hover:text-primary-400 transition-colors"
+              >
+                {ORGANIZATION_INFO.email}
+              </a>
             </div>
           </div>
         </div>

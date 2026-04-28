@@ -2,6 +2,7 @@ import Link from "next/link";
 import Typewriter from "@/components/ui/Typewriter";
 import EquipmentSlider from "@/components/ui/EquipmentSlider";
 import StatsCounter from "@/components/ui/StatsCounter";
+import ProgramCarousel from "@/components/ui/ProgramCarousel";
 
 export default function Home() {
   return (
@@ -71,15 +72,9 @@ export default function Home() {
               About
             </span>
             <h2 className="text-3xl font-bold text-slate-900 mt-3 mb-5 leading-tight">
-              교육을 함께 만드는
-              <br />
-              협동조합입니다
+              코딩스터디 협동조합은 SW·AI 교육 경험을 갖춘 교육 전문가들이 지역
+              교육 네트워크를 바탕으로 협력과 나눔의 가치를 실천하고 있습니다.
             </h2>
-            <p className="text-slate-500 leading-relaxed mb-5">
-              코딩스터디 협동조합은 코딩 교육 전문가들이 모여 설립한 사회적경제
-              조직입니다. 이윤보다 교육의 질을 우선하며, 조합원 모두가
-              전문가이자 의사결정자로 함께 운영합니다.
-            </p>
             <Link
               href="/about"
               className="inline-flex items-center gap-1.5 text-primary-600 hover:text-primary-700 font-semibold text-sm"
@@ -104,39 +99,39 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">🤝</div>
+              <div className="text-2xl mb-2">👨‍💻</div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
-                협동조합 방식
+                SW·AI 교육 프로그램 운영
               </h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                민주적 의사결정, 교육 품질 우선
+                실습 중심의 다양한 SW·AI 교육 운영
               </p>
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
               <div className="text-2xl mb-2">📚</div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
-                현장 중심 교육
+                교육 프로그램 개발
               </h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                학교 현장 경험 기반 커리큘럼
+                맞춤형 SW·AI 커리큘럼 연구·개발
               </p>
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">🏆</div>
+              <div className="text-2xl mb-2">👩‍🏫</div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
-                검증된 전문성
+                SW교육 강사 양성
               </h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                정식 자격증 보유 강사진
+                지역 현장 전문 강사 육성 프로그램
               </p>
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
-              <div className="text-2xl mb-2">🎯</div>
+              <div className="text-2xl mb-2">🤖</div>
               <h3 className="font-semibold text-slate-900 text-sm mb-1">
-                맞춤형 수업
+                교구 대여 사업
               </h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                기관 상황에 맞는 커스텀 설계
+                최신 디지털 교육 교구 저렴하게 대여
               </p>
             </div>
           </div>
@@ -157,100 +152,7 @@ export default function Home() {
               각 기관의 상황에 맞게 커리큘럼을 조정합니다.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="rounded-2xl p-7 flex flex-col gap-4 border transition-all hover:shadow-md bg-white border-slate-100">
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full w-fit bg-green-50 text-green-700">
-                초등학교
-              </span>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-slate-900">
-                  방과후 코딩 교실
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-500">
-                  스크래치, 엔트리 블록 코딩부터 텍스트 코딩 입문까지. 놀이처럼
-                  배우는 코딩 수업.
-                </p>
-              </div>
-              <ul className="flex flex-col gap-2">
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
-                  블록 코딩 (스크래치·엔트리)
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
-                  피지컬 컴퓨팅 (마이크로비트)
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
-                  게임 만들기 프로젝트
-                </li>
-              </ul>
-              <div className="mt-auto pt-4 border-t text-xs border-slate-100 text-slate-400">
-                대상: 초등 1~6학년
-              </div>
-            </div>
-            <div className="rounded-2xl p-7 flex flex-col gap-4 border transition-all hover:shadow-md bg-primary-600 border-primary-600">
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full w-fit bg-white/20 text-white">
-                중학교
-              </span>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-white">
-                  자유학기·AI 교육
-                </h3>
-                <p className="text-sm leading-relaxed text-blue-100">
-                  자유학기제 진로 연계 코딩 수업. 파이썬 기초부터 AI 원리
-                  체험까지.
-                </p>
-              </div>
-              <ul className="flex flex-col gap-2">
-                <li className="flex items-center gap-2 text-sm text-blue-100">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-blue-300"></span>
-                  파이썬 기초 프로그래밍
-                </li>
-                <li className="flex items-center gap-2 text-sm text-blue-100">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-blue-300"></span>
-                  AI·머신러닝 원리 체험
-                </li>
-                <li className="flex items-center gap-2 text-sm text-blue-100">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-blue-300"></span>
-                  자유학기 연계 프로젝트
-                </li>
-              </ul>
-              <div className="mt-auto pt-4 border-t text-xs border-white/20 text-blue-200">
-                대상: 중학교 1~3학년
-              </div>
-            </div>
-            <div className="rounded-2xl p-7 flex flex-col gap-4 border transition-all hover:shadow-md bg-white border-slate-100">
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full w-fit bg-purple-50 text-purple-700">
-                공공기관
-              </span>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-slate-900">
-                  체험 프로그램
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-500">
-                  도서관, 주민센터, 복지관 등 공공기관 대상 단기 체험 프로그램.
-                </p>
-              </div>
-              <ul className="flex flex-col gap-2">
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
-                  드론·코딩 체험
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
-                  VR·AR 콘텐츠 체험
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-primary-400"></span>
-                  3D 프린팅 체험
-                </li>
-              </ul>
-              <div className="mt-auto pt-4 border-t text-xs border-slate-100 text-slate-400">
-                대상: 아동·청소년·성인
-              </div>
-            </div>
-          </div>
+          <ProgramCarousel />
           <div className="mt-8 text-center">
             <Link
               href="/contact"

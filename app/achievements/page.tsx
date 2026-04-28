@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 import { achievements } from "@/data/achievements";
+import StatsCounter from "@/components/ui/StatsCounter";
 
 export default function AchievementsPage() {
   const [activeYear, setActiveYear] = useState<number>(
     achievements[0]?.year || new Date().getFullYear(),
   );
 
-  const stats = [
-    { label: "50건+", description: "총 실적 수" },
-    { label: "6년", description: "운영 연수" },
-    { label: "30곳+", description: "협력 기관" },
-    { label: "초·중·고·일반·특수", description: "교육 대상" },
+  const achievementStats = [
+    { value: 50, suffix: "건+", label: "총 실적 수" },
+    { value: 6, suffix: "년", label: "운영 연수" },
+    { value: 30, suffix: "곳+", label: "협력 기관" },
+    { textDisplay: "초·중·고\n일반·특수", label: "교육 대상" },
   ];
 
   const activeAchievement = achievements.find((a) => a.year === activeYear);
@@ -37,21 +38,10 @@ export default function AchievementsPage() {
       {/* Stats Section */}
       <section className="py-12 px-6 bg-white border-b border-slate-100">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 rounded-2xl p-5 text-center"
-              >
-                <p className="text-2xl font-black text-primary-600 mb-1">
-                  {stat.label}
-                </p>
-                <p className="text-xs text-slate-500 font-medium">
-                  {stat.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <StatsCounter
+            stats={achievementStats}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-8"
+          />
         </div>
       </section>
 
@@ -102,7 +92,7 @@ export default function AchievementsPage() {
                 </span>
               </div>
             ))}
-            
+
             {/* 엠프티 스테이트 (실적이 비어있을 경우) */}
             {(!activeAchievement || activeAchievement.items.length === 0) && (
               <div className="col-span-1 border border-slate-100 bg-slate-50 p-6 rounded-xl text-center text-slate-500 text-sm">

@@ -6,13 +6,14 @@ const ITEM_H = 56;
 const DURATION = 2000;
 const CYCLES = 4;
 
-interface StatConfig {
-  value: number;
-  suffix: string;
+export interface StatConfig {
+  value?: number;
+  suffix?: string;
+  textDisplay?: string;
   label: string;
 }
 
-const STATS: StatConfig[] = [
+const DEFAULT_STATS: StatConfig[] = [
   { value: 500, suffix: "+", label: "누적 수업 시간" },
   { value: 30, suffix: "+", label: "협력 학교·기관" },
   { value: 10, suffix: "+", label: "보유 교구 종류" },
@@ -30,7 +31,6 @@ function SlotDigit({
 }) {
   const stripRef = useRef<HTMLDivElement>(null);
 
-  // 0~9를 CYCLES번 반복한 뒤 최종 숫자로 착지
   const items: number[] = [];
   for (let c = 0; c < CYCLES; c++) {
     for (let n = 0; n <= 9; n++) items.push(n);
@@ -116,12 +116,65 @@ function SlotNumber({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-export default function StatsCounter() {
+function FadeText({ text }: { text: string }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-slate-100">
-      {STATS.map((stat) => (
+    <div
+      ref={ref}
+      className="flex flex-col justify-center transition-opacity duration-700"
+      style={{ height: ITEM_H, opacity: visible ? 1 : 0 }}
+    >
+      {text.split("\n").map((line, i) => (
+        <span
+          key={i}
+          className="font-bold text-primary-600 leading-tight"
+          style={{ fontSize: "1.6rem" }}
+        >
+          {line}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export default function StatsCounter({
+  stats,
+  className,
+}: {
+  stats?: StatConfig[];
+  className?: string;
+}) {
+  const items = stats ?? DEFAULT_STATS;
+
+  return (
+    <div
+      className={
+        className ??
+        "mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-slate-100"
+      }
+    >
+      {items.map((stat) => (
         <div key={stat.label}>
-          <SlotNumber value={stat.value} suffix={stat.suffix} />
+          {stat.value !== undefined && stat.suffix !== undefined ? (
+            <SlotNumber value={stat.value} suffix={stat.suffix} />
+          ) : stat.textDisplay !== undefined ? (
+            <FadeText text={stat.textDisplay} />
+          ) : null}
           <div className="text-sm text-slate-400 font-medium mt-1">
             {stat.label}
           </div>

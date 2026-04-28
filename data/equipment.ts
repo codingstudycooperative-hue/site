@@ -179,28 +179,6 @@ export const equipment: Equipment[] = [
     ],
   },
   {
-    slug: "ozobot",
-    name: "오조봇 (Ozobot)",
-    category: "로봇",
-    target: "유치원~초등학생",
-    maxHeadcount: 30,
-    description:
-      "선을 따라 움직이는 아주 작은 코딩 교육용 로봇입니다. 컬러 코드를 인식해 다양한 액션을 수행하며, 어린 학생들도 쉽게 코딩의 논리를 이해할 수 있습니다.",
-    emoji: "⏺️",
-    images: ["/assets/teachingtools/017.webp"],
-  },
-  {
-    slug: "sphero",
-    name: "스피로 볼 (Sphero)",
-    category: "로봇",
-    target: "초등학생~중학생",
-    maxHeadcount: 20,
-    description:
-      "모션 인식과 앱 제어가 가능한 구형(공 모양) 로봇 코딩 교구입니다. 놀이와 레이싱을 융합하여 활동적인 코딩 수업이 가능합니다.",
-    emoji: "⚽",
-    images: ["/assets/teachingtools/018.webp"],
-  },
-  {
     slug: "arduino",
     name: "아두이노 센서 키트",
     category: "IoT",
@@ -210,27 +188,5 @@ export const equipment: Equipment[] = [
       "기초적인 전자회로와 코딩을 융합하여 다양한 센서를 제어하는 메이커 교육의 핵심 교구입니다. 빛, 온도, 소음 등 각종 데이터를 측정하며 실험적인 프로젝트를 돕습니다.",
     emoji: "🔌",
     images: ["/assets/teachingtools/019.webp"],
-  },
-  {
-    slug: "vr-meta",
-    name: "메타 퀘스트 (Meta Quest)",
-    category: "VR",
-    target: "초등 고학년~성인",
-    maxHeadcount: 10,
-    description:
-      "코스페이시스(CoSpaces) 등의 플랫폼과 연계하여, 학생들이 직접 프로그래밍한 3D 가상 공간을 최고 사양의 무선 VR 헤드셋으로 생생히 체험하게 됩니다.",
-    emoji: "🥽",
-    images: ["/assets/teachingtools/020.webp"],
-  },
-  {
-    slug: "makeymakey",
-    name: "메이키메이키 (Makey Makey)",
-    category: "메이커",
-    target: "초등학생~중학생",
-    maxHeadcount: 25,
-    description:
-      "과일, 찰흙, 연필깎이 가루 등 전기가 통하는 일상 사물을 키보드 대신 컴퓨터에 연결해 입력 장치로 활용하는 창의 발명 코딩 교구입니다.",
-    emoji: "🍌",
-    images: ["/assets/teachingtools/021.webp"],
   },
 ];

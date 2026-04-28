@@ -24,22 +24,10 @@ const SLIDE_ITEMS = [
     image: "/assets/teachingtools/003.webp",
   },
   {
-    slug: "ozobot",
-    name: "오조봇 (Ozobot)",
-    label: "로봇 코딩 / 유아·초등",
-    image: "/assets/teachingtools/017.webp",
-  },
-  {
     slug: "kamibot",
     name: "카미봇 (Kamibot)",
     label: "AI 로봇 코딩",
     image: "/assets/teachingtools/004.webp",
-  },
-  {
-    slug: "sphero",
-    name: "스피로 볼 (Sphero)",
-    label: "모션 & 로봇 코딩",
-    image: "/assets/teachingtools/018.webp",
   },
   {
     slug: "arduino",
@@ -52,18 +40,6 @@ const SLIDE_ITEMS = [
     name: "텔로(Tello) 에듀 자율주행 드론",
     label: "AI 자율주행 / 드론 수학",
     image: "/assets/teachingtools/009.webp",
-  },
-  {
-    slug: "vr-meta",
-    name: "메타 퀘스트 (Meta Quest)",
-    label: "가상현실(VR) / 코스페이시스",
-    image: "/assets/teachingtools/020.webp",
-  },
-  {
-    slug: "makeymakey",
-    name: "메이키메이키 (Makey Makey)",
-    label: "발명 / 융합 코딩",
-    image: "/assets/teachingtools/021.webp",
   },
 ];
 

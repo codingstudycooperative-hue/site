@@ -11,27 +11,27 @@ const PROCESS_STEPS = [
   {
     number: "01",
     title: "문의 접수",
-    description: "온라인 폼을 통해 문의를 접수합니다.",
+    description: "온라인 폼을 통해\n문의를 접수합니다.",
   },
   {
     number: "02",
     title: "상담 및 일정 조율",
-    description: "담당자가 연락하여 상세한 상담을 진행합니다.",
+    description: "담당자가 연락하여\n상세한 상담을 진행합니다.",
   },
   {
     number: "03",
     title: "교육 계획 수립",
-    description: "맞춤형 교육 계획을 수립합니다.",
+    description: "맞춤형 교육 계획을\n수립합니다.",
   },
   {
     number: "04",
     title: "교육 진행",
-    description: "계획된 일정에 따라 교육을 진행합니다.",
+    description: "계획된 일정에 따라\n교육을 진행합니다.",
   },
   {
     number: "05",
     title: "사후 관리",
-    description: "교육 후 피드백과 사후 관리를 제공합니다.",
+    description: "교육 후 피드백과\n사후 관리를 제공합니다.",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function ContactPage() {
                 <h3 className="text-lg font-bold text-slate-900 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-sm text-slate-500 leading-relaxed word-break">
+                <p className="text-sm text-slate-500 leading-relaxed whitespace-pre-line">
                   {step.description}
                 </p>
                 {/* 화살표 장식 (PC 크기) */}

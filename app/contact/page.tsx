@@ -1,5 +1,6 @@
 import PageBanner from "@/components/ui/PageBanner";
 import ContactForm from "@/components/ui/ContactForm";
+import GmailLink from "@/components/ui/GmailLink";
 import { ORGANIZATION_INFO } from "@/lib/constants";
 
 export const metadata = {
@@ -73,22 +74,10 @@ export default function ContactPage() {
                 <h3 className="text-sm font-bold text-slate-400 mb-1">
                   이메일 문의
                 </h3>
-                {/* PC: Gmail 다이렉트 */}
-                <a
-                  href={`https://mail.google.com/mail/?view=cm&to=${ORGANIZATION_INFO.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden md:inline text-xl sm:text-2xl font-black text-slate-900 hover:text-primary-600 transition-colors break-all"
-                >
-                  {ORGANIZATION_INFO.email}
-                </a>
-                {/* 모바일: mailto */}
-                <a
-                  href={`mailto:${ORGANIZATION_INFO.email}`}
-                  className="md:hidden text-xl font-black text-slate-900 hover:text-primary-600 transition-colors break-all"
-                >
-                  {ORGANIZATION_INFO.email}
-                </a>
+                <GmailLink
+                  email={ORGANIZATION_INFO.email}
+                  className="text-xl sm:text-2xl font-black text-slate-900 hover:text-primary-600 transition-colors break-all"
+                />
               </div>
             </div>
           </div>

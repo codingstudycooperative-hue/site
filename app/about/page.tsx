@@ -169,7 +169,7 @@ export default function About() {
 
           <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
             {/* 카드 1 */}
-            <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
+            <div className="flex gap-6 p-8 rounded-3xl bg-white border hover:border-primary-200 border-slate-100 transition-all hover:shadow-md group">
               <div className="relative w-20 self-stretch shrink-0">
                 <Image
                   src="/assets/sw.webp"
@@ -190,7 +190,7 @@ export default function About() {
             </div>
 
             {/* 카드 2 */}
-            <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
+            <div className="flex gap-6 p-8 rounded-3xl bg-white border hover:border-primary-200 border-slate-100 transition-all hover:shadow-md group">
               <div className="relative w-20 self-stretch shrink-0">
                 <Image
                   src="/assets/bui.webp"
@@ -211,7 +211,7 @@ export default function About() {
             </div>
 
             {/* 카드 3 */}
-            <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
+            <div className="flex gap-6 p-8 rounded-3xl bg-white border hover:border-primary-200 border-slate-100 transition-all hover:shadow-md group">
               <div className="relative w-20 self-stretch shrink-0">
                 <Image
                   src="/assets/te.webp"
@@ -232,7 +232,7 @@ export default function About() {
             </div>
 
             {/* 카드 4 */}
-            <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
+            <div className="flex gap-6 p-8 rounded-3xl bg-white border hover:border-primary-200 border-slate-100 transition-all hover:shadow-md group">
               <div className="relative w-20 self-stretch shrink-0">
                 <Image
                   src="/assets/bui.webp"

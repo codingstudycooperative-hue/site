@@ -235,7 +235,7 @@ export default function About() {
             <div className="flex gap-6 p-8 rounded-3xl bg-white border hover:border-primary-200 border-slate-100 transition-all hover:shadow-md group">
               <div className="relative w-20 self-stretch shrink-0">
                 <Image
-                  src="/assets/bui.webp"
+                  src="/assets/ren.webp"
                   alt="교구 대여 사업"
                   fill
                   className="object-contain"

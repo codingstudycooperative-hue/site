@@ -69,9 +69,19 @@ export default function Footer() {
               <span className="text-slate-200 font-medium w-14 shrink-0">
                 메일
               </span>
+              {/* PC: Gmail 다이렉트 */}
+              <a
+                href={`https://mail.google.com/mail/?view=cm&to=${ORGANIZATION_INFO.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:inline text-slate-300 hover:text-primary-400 transition-colors"
+              >
+                {ORGANIZATION_INFO.email}
+              </a>
+              {/* 모바일: mailto */}
               <a
                 href={`mailto:${ORGANIZATION_INFO.email}`}
-                className="text-slate-300 hover:text-primary-400 transition-colors"
+                className="md:hidden text-slate-300 hover:text-primary-400 transition-colors"
               >
                 {ORGANIZATION_INFO.email}
               </a>

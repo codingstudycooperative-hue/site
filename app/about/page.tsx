@@ -170,15 +170,13 @@ export default function About() {
           <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
             {/* 카드 1 */}
             <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0 group-hover:bg-primary-50">
-                <Image
-                  src="/assets/sw.webp"
-                  alt="SW·AI 교육"
-                  width={52}
-                  height={52}
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src="/assets/sw.webp"
+                alt="SW·AI 교육"
+                width={52}
+                height={52}
+                className="object-contain shrink-0"
+              />
               <div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">
                   SW·AI 교육 프로그램 운영
@@ -192,15 +190,13 @@ export default function About() {
 
             {/* 카드 2 */}
             <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0 group-hover:bg-primary-50">
-                <Image
-                  src="/assets/bui.webp"
-                  alt="교육 프로그램 개발"
-                  width={52}
-                  height={52}
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src="/assets/bui.webp"
+                alt="교육 프로그램 개발"
+                width={52}
+                height={52}
+                className="object-contain shrink-0"
+              />
               <div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">
                   교육 프로그램 개발
@@ -214,15 +210,13 @@ export default function About() {
 
             {/* 카드 3 */}
             <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0 group-hover:bg-primary-50">
-                <Image
-                  src="/assets/te.webp"
-                  alt="SW교육 강사 양성"
-                  width={52}
-                  height={52}
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src="/assets/te.webp"
+                alt="SW교육 강사 양성"
+                width={52}
+                height={52}
+                className="object-contain shrink-0"
+              />
               <div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">
                   SW교육 강사 양성
@@ -236,15 +230,13 @@ export default function About() {
 
             {/* 카드 4 */}
             <div className="flex gap-6 p-8 rounded-3xl bg-slate-50 hover:bg-white border hover:border-primary-200 border-transparent transition-all hover:shadow-md group">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm shrink-0 group-hover:bg-primary-50">
-                <Image
-                  src="/assets/bui.webp"
-                  alt="교구 대여 사업"
-                  width={52}
-                  height={52}
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src="/assets/bui.webp"
+                alt="교구 대여 사업"
+                width={52}
+                height={52}
+                className="object-contain shrink-0"
+              />
               <div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">
                   교구 대여 사업

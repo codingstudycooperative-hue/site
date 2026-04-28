@@ -299,7 +299,7 @@ export default function Programs() {
               </h3>
               <p className="text-sm text-slate-500 mb-6 flex-1">
                 공공기관, 복지기관의 목적과 대상에 맞춰 기술을 쉽고 재미있게
-                체험할 수 있도록 구성합니다.
+                체험하도록 구성합니다.
               </p>
               <div className="mb-6">
                 <h4 className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wide">

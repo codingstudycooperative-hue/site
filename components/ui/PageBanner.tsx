@@ -21,7 +21,7 @@ export default function PageBanner({
           {subtitle}
         </h1>
         {description && (
-          <p className="text-slate-500 text-lg max-w-2xl leading-relaxed">
+          <p className="text-slate-500 text-lg max-w-4xl leading-relaxed">
             {description}
           </p>
         )}

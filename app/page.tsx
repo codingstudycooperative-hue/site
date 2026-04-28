@@ -153,7 +153,7 @@ export default function Home() {
             <div className="bg-white p-5 rounded-2xl border border-slate-100">
               <div className="mb-2">
                 <Image
-                  src="/assets/bui.webp"
+                  src="/assets/ren.webp"
                   alt="교구 대여 사업"
                   width={52}
                   height={52}

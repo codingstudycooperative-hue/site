@@ -174,8 +174,8 @@ export default function About() {
                 <Image
                   src="/assets/sw.webp"
                   alt="SW·AI 교육"
-                  width={48}
-                  height={48}
+                  width={52}
+                  height={52}
                   className="object-contain"
                 />
               </div>
@@ -196,8 +196,8 @@ export default function About() {
                 <Image
                   src="/assets/bui.webp"
                   alt="교육 프로그램 개발"
-                  width={48}
-                  height={48}
+                  width={52}
+                  height={52}
                   className="object-contain"
                 />
               </div>
@@ -218,8 +218,8 @@ export default function About() {
                 <Image
                   src="/assets/te.webp"
                   alt="SW교육 강사 양성"
-                  width={48}
-                  height={48}
+                  width={52}
+                  height={52}
                   className="object-contain"
                 />
               </div>
@@ -240,8 +240,8 @@ export default function About() {
                 <Image
                   src="/assets/bui.webp"
                   alt="교구 대여 사업"
-                  width={48}
-                  height={48}
+                  width={52}
+                  height={52}
                   className="object-contain"
                 />
               </div>

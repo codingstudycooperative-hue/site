@@ -21,7 +21,9 @@ export default function Programs() {
                   <span>🧸</span> 초등학교
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 leading-snug">
-                  기초 코딩부터 메이커 프로젝트까지 쉽고 즐겁게 확장
+                  기초 코딩부터 메이커 프로젝트까지
+                  <br />
+                  쉽고 즐겁게 확장
                 </h3>
                 <p className="text-sm text-slate-500 leading-relaxed mb-6">
                   놀이와 탐구를 바탕으로 컴퓨팅 사고력의 기초를 다지는 성장형

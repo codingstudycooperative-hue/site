@@ -19,7 +19,7 @@ export default function Home() {
                 hideCursorOnComplete={true}
               />
             </h1>
-            <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl min-h-[4rem]">
+            <p className="text-lg text-slate-500 leading-relaxed mb-10 min-h-[4rem]">
               <Typewriter
                 text="코딩스터디 협동조합은 학교와 지역사회가 함께, SW·AI로 디지털 미래를 준비합니다."
                 delay={1500}
@@ -143,7 +143,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3.5 rounded-xl border border-transparent transition-colors text-sm shadow-sm"
+              className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-xl border border-transparent transition-colors text-sm shadow-sm"
             >
               수업 의뢰하기
               <svg

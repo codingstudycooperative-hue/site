@@ -99,7 +99,7 @@ export default async function GalleryPage() {
       <PageBanner
         title="Gallery"
         subtitle="갤러리"
-        description="실제 수업현장과 조합 행사 사진"
+        description="수업과 활동의 생생한 현장을 담았습니다."
       />
 
       <section className="py-12 sm:py-16 bg-white">

@@ -8,7 +8,7 @@ export default function Programs() {
       <PageBanner
         title="Programs"
         subtitle="교육 프로그램"
-        description="다양한 교구와 실습 중심 수업을 바탕으로, 학교급과 대상 특성에 맞는 SW·AI 교육 프로그램을 운영합니다."
+        description={`다양한 교구와 실습 중심 수업을 바탕으로,\n학교급과 대상 특성에 맞는 SW·AI 교육 프로그램을 운영합니다.`}
       />
 
       <div className="px-6 py-16 bg-white">

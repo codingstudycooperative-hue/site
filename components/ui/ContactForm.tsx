@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 interface FormData {
   org_name: string;
@@ -76,22 +75,26 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      const supabase = createClient();
-
-      const { error } = await supabase.from("inquiries").insert({
-        org_name: formData.org_name,
-        manager: formData.manager,
-        phone: formData.phone,
-        email: formData.email,
-        grade: formData.grade || null,
-        program: formData.program || null,
-        headcount: formData.headcount ? parseInt(formData.headcount) : null,
-        desired_date: formData.desired_date || null,
-        message: formData.message,
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          org_name: formData.org_name,
+          manager: formData.manager,
+          phone: formData.phone,
+          email: formData.email,
+          grade: formData.grade || null,
+          program: formData.program || null,
+          headcount: formData.headcount || null,
+          desired_date: formData.desired_date || null,
+          message: formData.message,
+        }),
       });
 
-      if (error) {
-        throw error;
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.error ?? "알 수 없는 오류");
       }
 
       setSuccessMessage("문의가 성공적으로 접수되었습니다.");
@@ -108,11 +111,9 @@ export default function ContactForm() {
         agree: false,
       });
 
-      // 3초 후 메시지 제거
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (error) {
       console.error("문의 접수 오류:", error);
-      // Supabase 오류 메시지 추출
       const errMsg =
         typeof error === "object" && error !== null && "message" in error
           ? (error as { message: string }).message

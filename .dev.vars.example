@@ -5,3 +5,9 @@ NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
+# Google Apps Script Webhook (Gmail 발송용)
+# 1. script.google.com 에서 새 프로젝트 생성
+# 2. docs/gas-mail-webhook.gs 코드 붙여넣기
+# 3. 배포 → 웹 앱으로 게시 → URL 복사
+GAS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
+GAS_WEBHOOK_SECRET=임의의_긴_랜덤_문자열

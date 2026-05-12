@@ -1,11 +1,20 @@
+import type { Metadata } from "next";
 import PageBanner from "@/components/ui/PageBanner";
 import GalleryFilter from "@/components/gallery/GalleryFilter";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
-export const metadata = {
-  title: "갤러리 | 코딩스터디 협동조합",
-  description: "코딩스터디 협동조합의 수업 현장과 행사 사진을 둘러보세요.",
+export const metadata: Metadata = {
+  title: "갤러리",
+  description:
+    "코딩스터디 협동조합의 수업 현장, 메이커 활동, 교육 행사 사진을 카테고리와 연도별로 둘러보세요.",
+  keywords: ["코딩 수업", "메이커 활동", "교육 현장", "SW교육 사진"],
+  alternates: { canonical: "/gallery" },
+  openGraph: {
+    url: "https://codingstudy.kr/gallery",
+    title: "갤러리 | 코딩스터디 협동조합",
+    description: "수업과 활동의 생생한 현장을 사진으로 확인하세요.",
+  },
 };
 
 interface Album {

@@ -1,8 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Typewriter from "@/components/ui/Typewriter";
 import EquipmentSlider from "@/components/ui/EquipmentSlider";
 import StatsCounter from "@/components/ui/StatsCounter";
 import ProgramCarousel from "@/components/ui/ProgramCarousel";
+
+export const metadata: Metadata = {
+  title: "코딩스터디 협동조합 | SW·AI 교육 전문 협동조합",
+  description:
+    "학교와 지역사회가 함께하는 SW·AI 교육. 방과후 코딩, 자유학기 AI 교육, 공공기관 디지털 체험 프로그램을 운영합니다.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    url: "https://codingstudy.kr/",
+    title: "코딩스터디 협동조합 | SW·AI 교육 전문 협동조합",
+    description:
+      "학교와 지역사회가 함께하는 SW·AI 교육. 방과후 코딩, 자유학기 AI 교육, 공공기관 디지털 체험 프로그램을 운영합니다.",
+  },
+};
 
 export default function Home() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,6 +15,43 @@ export async function generateStaticParams() {
   return equipment.map((item) => ({
     slug: item.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: EquipmentDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const item = equipment.find((e) => e.slug === slug);
+
+  if (!item) {
+    return {
+      title: "교구를 찾을 수 없습니다",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const description = `${item.category} · ${item.target} 대상. ${item.description.slice(0, 120)}`;
+  const ogImage = item.images?.[0];
+
+  return {
+    title: item.name,
+    description,
+    keywords: [item.name, item.category, "교구", "SW교육", "AI교육"],
+    alternates: { canonical: `/equipment/${item.slug}` },
+    openGraph: {
+      url: `https://codingstudy.kr/equipment/${item.slug}`,
+      title: `${item.name} | 코딩스터디 협동조합`,
+      description,
+      ...(ogImage && {
+        images: [
+          {
+            url: ogImage,
+            alt: item.name,
+          },
+        ],
+      }),
+    },
+  };
 }
 
 export default async function EquipmentDetailPage({

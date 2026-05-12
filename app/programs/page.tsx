@@ -1,6 +1,28 @@
+import type { Metadata } from "next";
 import PageBanner from "@/components/ui/PageBanner";
 import Link from "next/link";
 import { ORGANIZATION_INFO } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "교육 프로그램",
+  description:
+    "초·중·고 학교급별 맞춤형 SW·AI 교육 프로그램. 기초 코딩, 메이커 프로젝트, AI·IoT 교육, 자유학기·방과후 교육을 운영합니다.",
+  keywords: [
+    "방과후 코딩",
+    "자유학기 AI",
+    "초등 코딩 교육",
+    "중학교 AI",
+    "고등 SW 교육",
+    "메이커 교육",
+  ],
+  alternates: { canonical: "/programs" },
+  openGraph: {
+    url: "https://codingstudy.kr/programs",
+    title: "교육 프로그램 | 코딩스터디 협동조합",
+    description:
+      "초·중·고 학교급별 맞춤형 SW·AI 교육 프로그램. 기초 코딩부터 AI·IoT 심화까지.",
+  },
+};
 
 export default function Programs() {
   return (

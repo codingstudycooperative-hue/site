@@ -1,11 +1,20 @@
+import type { Metadata } from "next";
 import PageBanner from "@/components/ui/PageBanner";
 import ContactForm from "@/components/ui/ContactForm";
 import GmailLink from "@/components/ui/GmailLink";
 import { ORGANIZATION_INFO } from "@/lib/constants";
 
-export const metadata = {
-  title: "수업의뢰 및 문의 | 코딩스터디 협동조합",
-  description: "코딩스터디 협동조합에 수업을 의뢰하거나 문의하세요.",
+export const metadata: Metadata = {
+  title: "수업의뢰 및 문의",
+  description:
+    "방과후 코딩, 자유학기 AI, 공공기관 디지털 체험 프로그램 등 SW·AI 교육 수업 의뢰 및 문의를 받습니다.",
+  keywords: ["수업 의뢰", "코딩 강사", "AI 교육 문의", "교구 대여 문의"],
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    url: "https://codingstudy.kr/contact",
+    title: "수업의뢰 및 문의 | 코딩스터디 협동조합",
+    description: "SW·AI 교육 수업 의뢰와 문의를 온라인으로 접수받습니다.",
+  },
 };
 
 const PROCESS_STEPS = [

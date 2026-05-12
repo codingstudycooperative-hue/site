@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import PageBanner from "@/components/ui/PageBanner";
+
+export const metadata: Metadata = {
+  title: "조합 소개",
+  description:
+    "코딩스터디 협동조합은 교육으로 사회적 가치를 실현하는 SW·AI 교육 전문 협동조합입니다. 설립 배경, 운영 철학, 주요 사업을 소개합니다.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    url: "https://codingstudy.kr/about",
+    title: "조합 소개 | 코딩스터디 협동조합",
+    description:
+      "교육으로 사회적 가치를 실현하는 SW·AI 교육 전문 협동조합. 설립 배경과 운영 철학을 소개합니다.",
+  },
+};
 
 export default function About() {
   return (

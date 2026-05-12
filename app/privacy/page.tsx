@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import PageBanner from "@/components/ui/PageBanner";
 import { ORGANIZATION_INFO } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "개인정보처리방침",
+  description:
+    "코딩스터디 협동조합의 개인정보처리방침입니다. 수집 항목, 이용 목적, 보유 기간 등을 안내합니다.",
+  alternates: { canonical: "/privacy" },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function Privacy() {
   return (

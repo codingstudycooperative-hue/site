@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import PageBanner from "@/components/ui/PageBanner";
@@ -8,6 +9,50 @@ interface Image {
   id: string;
   storage_path: string;
   order_num: number;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const supabase = await createClient();
+    const { data: album } = await supabase
+      .from("gallery_albums")
+      .select("title, category, year, description")
+      .eq("id", id)
+      .single();
+
+    if (!album) {
+      return {
+        title: "앨범을 찾을 수 없습니다",
+        robots: { index: false, follow: false },
+      };
+    }
+
+    const description =
+      album.description ??
+      `${album.year}년 ${album.category} - 코딩스터디 협동조합의 ${album.title} 활동 사진입니다.`;
+
+    return {
+      title: album.title,
+      description,
+      alternates: { canonical: `/gallery/${id}` },
+      openGraph: {
+        url: `https://codingstudy.kr/gallery/${id}`,
+        title: `${album.title} | 코딩스터디 협동조합 갤러리`,
+        description,
+      },
+    };
+  } catch {
+    return {
+      title: "갤러리",
+      robots: { index: false, follow: false },
+    };
+  }
 }
 
 async function getAlbumData(id: string) {
